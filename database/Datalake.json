@@ -1,0 +1,22 @@
+{
+	"name": "Datalake",
+	"properties": {
+		"Name": "Datalake",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage"
+			}
+		}
+	},
+	"type": "DATABASE"
+}
