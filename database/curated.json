@@ -1,0 +1,22 @@
+{
+	"name": "curated",
+	"properties": {
+		"Name": "curated",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "LSDatalake"
+			}
+		}
+	},
+	"type": "DATABASE"
+}
