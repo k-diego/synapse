@@ -316,7 +316,7 @@
 				"Provider": "ADLS",
 				"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData",
 				"Properties": {
-					"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage",
+					"LinkedServiceName": "LSDatalake",
 					"LocationSetToDatabaseDefault": false
 				}
 			},

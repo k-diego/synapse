@@ -14,7 +14,7 @@
 			"Location": "abfss://synapse@stpdbackbonedevdatalake.dfs.core.windows.net/",
 			"Properties": {
 				"FormatType": "parquet",
-				"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage"
+				"LinkedServiceName": "LSDatalake"
 			}
 		}
 	},

@@ -148,13 +148,13 @@
 				"Provider": "ADLS",
 				"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=Pressure10PIRA01",
 				"Properties": {
-					"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage",
+					"LinkedServiceName": "LSDatalake",
 					"LocationSetToDatabaseDefault": false
 				}
 			},
 			"Properties": {
 				"textinputformat.record.delimiter": ",",
-				"compression": "",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
 				"derivedModelAttributeInfo": "{\"attributeReferences\":{}}"
 			},
 			"Compressed": false,
