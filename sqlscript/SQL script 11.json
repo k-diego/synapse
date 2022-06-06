@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 11",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [ID]\n,[Timestamp_DB]\n,[Timestamp]\n,[ElapsedBatchRuntime]\n,[MbrNumber]\n,[ProductName]\n,[ProjectNumber]\n,[RunId]\n,[ExperimentId]\n,[DeviceId]\n,[SoftwareVersion]\n,[BatchId]\n,[TimeStampStart]\n,[MethodPatternId]\n,[MethodPatternComment]\n,[OperatorId]\n,[SupervisorId]\n,[StartComment]\n,[RunComment]\n,[SensorData]\n,[CPanelVersion]\n,[TcSolutionVersion]\n,[TwinCatVersion]\n,[Run_DbId]\n FROM [curated].[dbo].[MasterBatchRecordData]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "curated",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
