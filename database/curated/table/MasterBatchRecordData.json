@@ -308,13 +308,13 @@
 				"FormatType": "parquet",
 				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
 				"Properties": {
-					"path": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/*",
+					"path": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/year=*/month=*/day=*/*.parquet",
 					"FormatTypeSetToDatabaseDefault": false
 				}
 			},
 			"Source": {
 				"Provider": "ADLS",
-				"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/*",
+				"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/year=*/month=*/day=*/*.parquet",
 				"Properties": {
 					"LinkedServiceName": "LSDatalake",
 					"LocationSetToDatabaseDefault": false
