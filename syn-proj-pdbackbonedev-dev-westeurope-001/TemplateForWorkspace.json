@@ -6,6 +6,10 @@
 			"type": "string",
 			"metadata": "Workspace name",
 			"defaultValue": "syn-proj-pdbackbonedev-dev-westeurope-001"
+		},
+		"LSDatalake_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stpdbackbonedevdatalake.dfs.core.windows.net"
 		}
 	},
 	"variables": {
@@ -32,10 +36,10 @@
 							},
 							"Source": {
 								"Provider": "ADLS",
-								"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated",
+								"Location": "abfss://synapse@stpdbackbonedevdatalake.dfs.core.windows.net/",
 								"Properties": {
 									"FormatType": "parquet",
-									"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage"
+									"LinkedServiceName": "LSDatalake"
 								}
 							}
 						},
@@ -47,7 +51,7 @@
 						"ActionType": "CREATE",
 						"OldEntity": null,
 						"NewEntity": {
-							"Name": "MasterBatchRecordData",
+							"Name": "Test",
 							"EntityType": "TABLE",
 							"Namespace": {
 								"DatabaseName": "Datalake"
@@ -362,184 +366,7 @@
 									"Provider": "ADLS",
 									"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData",
 									"Properties": {
-										"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage",
-										"LocationSetToDatabaseDefault": false
-									}
-								},
-								"Properties": {
-									"textinputformat.record.delimiter": ",",
-									"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
-									"derivedModelAttributeInfo": "{\"attributeReferences\":{}}"
-								},
-								"Compressed": false,
-								"IsStoredAsSubdirectories": false
-							},
-							"Properties": {
-								"Description": "",
-								"DisplayFolderInfo": "{\"name\":\"Others\",\"colorCode\":\"\"}",
-								"PrimaryKeys": "",
-								"spark.sql.sources.provider": "parquet"
-							},
-							"Retention": 0,
-							"Temporary": false,
-							"IsRewriteEnabled": false
-						},
-						"Source": {
-							"Type": "SPARK"
-						}
-					},
-					{
-						"ActionType": "CREATE",
-						"OldEntity": null,
-						"NewEntity": {
-							"Name": "Pressure10PIRA01",
-							"EntityType": "TABLE",
-							"Namespace": {
-								"DatabaseName": "Datalake"
-							},
-							"Description": "",
-							"TableType": "EXTERNAL",
-							"Origin": {
-								"Type": "SPARK"
-							},
-							"StorageDescriptor": {
-								"Columns": [
-									{
-										"Name": "ID",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "Timestamp_DB",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "Timestamp",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "ElapsedBatchRuntime",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "ActualPressureDifference",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "LowerWarningLevel",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "UpperWarningLevel",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "LowerAlarmLevel",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "UpperAlarmLevel",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									},
-									{
-										"Name": "Run_DbId",
-										"OriginDataTypeName": {
-											"TypeName": "string",
-											"IsComplexType": false,
-											"IsNullable": true,
-											"Length": 8000,
-											"Properties": {
-												"HIVE_TYPE_STRING": "string"
-											}
-										}
-									}
-								],
-								"Format": {
-									"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
-									"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
-									"FormatType": "parquet",
-									"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
-									"Properties": {
-										"path": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=Pressure10PIRA01",
-										"FormatTypeSetToDatabaseDefault": false
-									}
-								},
-								"Source": {
-									"Provider": "ADLS",
-									"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=Pressure10PIRA01",
-									"Properties": {
-										"LinkedServiceName": "syn-proj-pdbackbonedev-dev-westeurope-001-WorkspaceDefaultStorage",
+										"LinkedServiceName": "LSDatalake",
 										"LocationSetToDatabaseDefault": false
 									}
 								},
@@ -576,6 +403,59 @@
 			"properties": {
 				"content": {
 					"query": "SELECT TOP (100) [ID]\n,[Timestamp_DB]\n,[Timestamp]\n,[ElapsedBatchRuntime]\n,[ActualPressureDifference]\n,[LowerWarningLevel]\n,[UpperWarningLevel]\n,[LowerAlarmLevel]\n,[UpperAlarmLevel]\n,[Run_DbId]\n FROM [Datalake].[dbo].[Pressure10PIRA01]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "Datalake",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 3')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "SELECT TOP 10 *\n FROM [Datalake].[dbo].[Pressure10PIRA01]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "Datalake",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/LSDatalake')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LSDatalake_properties_typeProperties_url')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 5')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseParquetFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] \n\tWITH ( FORMAT_TYPE = PARQUET)\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'datalake_stpdbackbonedevdatalake_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [datalake_stpdbackbonedevdatalake_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net' \n\t)\nGO\n\nCREATE EXTERNAL TABLE [MasterBatchRecordData] (\n\t[ID] nvarchar(4000),\n\t[Timestamp_DB] nvarchar(4000),\n\t[Timestamp] nvarchar(4000),\n\t[ElapsedBatchRuntime] nvarchar(4000),\n\t[MbrNumber] nvarchar(4000),\n\t[ProductName] nvarchar(4000),\n\t[ProjectNumber] nvarchar(4000),\n\t[RunId] nvarchar(4000),\n\t[ExperimentId] nvarchar(4000),\n\t[DeviceId] nvarchar(4000),\n\t[SoftwareVersion] nvarchar(4000),\n\t[BatchId] nvarchar(4000),\n\t[TimeStampStart] nvarchar(4000),\n\t[MethodPatternId] nvarchar(4000),\n\t[MethodPatternComment] nvarchar(4000),\n\t[OperatorId] nvarchar(4000),\n\t[SupervisorId] nvarchar(4000),\n\t[StartComment] nvarchar(4000),\n\t[RunComment] nvarchar(4000),\n\t[SensorData] nvarchar(4000),\n\t[CPanelVersion] nvarchar(4000),\n\t[TcSolutionVersion] nvarchar(4000),\n\t[TwinCatVersion] nvarchar(4000),\n\t[Run_DbId] nvarchar(4000)\n\t)\n\tWITH (\n\tLOCATION = 'curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/**',\n\tDATA_SOURCE = [datalake_stpdbackbonedevdatalake_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseParquetFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM [dbo].[MasterBatchRecordData]\nGO",
 					"metadata": {
 						"language": "sql"
 					},

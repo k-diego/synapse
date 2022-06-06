@@ -4,6 +4,9 @@
 	"parameters": {
 		"workspaceName": {
 			"value": "syn-proj-pdbackbonedev-dev-westeurope-001"
+		},
+		"LSDatalake_properties_typeProperties_url": {
+			"value": "https://stpdbackbonedevdatalake.dfs.core.windows.net"
 		}
 	}
 }
