@@ -1,0 +1,10 @@
+{
+	"name": "LSDatalake",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://stpdbackbonedevdatalake.dfs.core.windows.net"
+		}
+	}
+}
