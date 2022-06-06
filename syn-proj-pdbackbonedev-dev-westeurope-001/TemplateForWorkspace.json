@@ -391,13 +391,13 @@
 									"FormatType": "parquet",
 									"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
 									"Properties": {
-										"path": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/year=2022/month=06/day=02/2022-06-02T16:49:36.049.parquet",
+										"path": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/**",
 										"FormatTypeSetToDatabaseDefault": false
 									}
 								},
 								"Source": {
 									"Provider": "ADLS",
-									"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/year=2022/month=06/day=02/2022-06-02T16:49:36.049.parquet",
+									"Location": "abfss://datalake@stpdbackbonedevdatalake.dfs.core.windows.net/curated/tenant=PrinterCo/server=S-TSLA-DCU-002/db=CureVac DataLogging CUR00011 M02 DNA/table=MasterBatchRecordData/**",
 									"Properties": {
 										"LinkedServiceName": "LSDatalake",
 										"LocationSetToDatabaseDefault": false
@@ -419,7 +419,8 @@
 							},
 							"Retention": 0,
 							"Temporary": false,
-							"IsRewriteEnabled": false
+							"IsRewriteEnabled": false,
+							"Partitioning": {}
 						},
 						"Source": {
 							"Type": "SPARK"
@@ -441,6 +442,26 @@
 					},
 					"currentConnection": {
 						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 10')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "SELECT TOP (100) [ID]\n,[Timestamp_DB]\n,[Timestamp]\n,[ElapsedBatchRuntime]\n,[MbrNumber]\n,[ProductName]\n,[ProjectNumber]\n,[RunId]\n,[ExperimentId]\n,[DeviceId]\n,[SoftwareVersion]\n,[BatchId]\n,[TimeStampStart]\n,[MethodPatternId]\n,[MethodPatternComment]\n,[OperatorId]\n,[SupervisorId]\n,[StartComment]\n,[RunComment]\n,[SensorData]\n,[CPanelVersion]\n,[TcSolutionVersion]\n,[TwinCatVersion]\n,[Run_DbId]\n FROM [curated].[dbo].[MasterBatchRecordData]",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "curated",
 						"poolName": "Built-in"
 					},
 					"resultLimit": 5000
